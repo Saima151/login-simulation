@@ -57,15 +57,12 @@ button {
 
 <script>
 
-// get stored values
 let clicks = localStorage.getItem("clicks") || 0;
 let entries = localStorage.getItem("entries") || 0;
 
-// count visit
 clicks++;
 localStorage.setItem("clicks", clicks);
 
-// show stats
 document.getElementById("stats").innerHTML =
     "Page Visits: " + clicks + " | Data Entered: " + entries;
 
