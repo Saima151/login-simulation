@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Portal Login</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+}
+
+.box {
+    width: 320px;
+    margin: 100px auto;
+    padding: 30px;
+    background: white;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#stats {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Student Login</h2>
+
+    <input type="text" placeholder="Username" id="user"><br>
+    <input type="password" placeholder="Password" id="pass"><br>
+
+    <button onclick="login()">Login</button>
+
+    <p id="msg"></p>
+    <p id="stats"></p>
+</div>
+
+<script>
+
+let clicks = localStorage.getItem("clicks") || 0;
+let entries = localStorage.getItem("entries") || 0;
+
+clicks++;
+localStorage.setItem("clicks", clicks);
+
+document.getElementById("stats").innerHTML =
+    "Page Visits: " + clicks + " | Data Entered: " + entries;
+
+function login() {
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+
+    if(u !== "" && p !== "") {
+
+        entries++;
+        localStorage.setItem("entries", entries);
+
+        document.getElementById("msg").innerHTML =
+        "⚠ This was a phishing simulation! Never enter credentials on unknown sites.";
+
+        document.getElementById("stats").innerHTML =
+        "Page Visits: " + clicks + " | Data Entered: " + entries;
+
+    } else {
+        document.getElementById("msg").innerHTML = "Enter details";
+    }
+}
+</script>
+
+</body>
+</html>
